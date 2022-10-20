@@ -1,0 +1,55 @@
+.contaierColor{
+  max-width: 100% !important;
+  padding: 0;
+}
+.f_title2{
+  margin-bottom: 15px;
+}
+.f_title2 p{
+  margin-bottom: 15px  !important;
+}
+.pr_style{
+  height: 320px;
+}
+.pr_style img{
+  display:block;
+	width:100%;
+	height:auto;
+}
+.img-fluid{
+  width: 350px;
+  height: 240px;
+}
+
+/*vacant*/
+.pageStyle{
+  color:#008000;
+}
+#Paige{
+  display: inline-block;
+  left: 44%;
+  position: absolute;
+  width: 164px;
+  height: 35px;
+}
+#Paige-div{
+  width: 100%;
+  height: 50px;
+}
+.spaceTr{
+  cursor: pointer;
+}
+#spaceTable{
+  background-color: #008000;
+  color:#fff;
+}
+#spaceTable > tr > th:nth-child(1){
+  width: 40px;
+}
+#spaceTable > tr > th:nth-child(3){
+  width: 240px;
+}
+#spaceTable > tr > th:nth-child(4){
+width: 140px;
+}
+/*vacant 끝*/
