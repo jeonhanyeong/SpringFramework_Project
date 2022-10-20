@@ -7,4 +7,10 @@
 SELECT * FROM EMP
 </select>
 
+
+<select id="businessList" resultType="EmpDTO">
+SELECT * FROM EMP
+ </select>
+ 
+ 
 </mapper>

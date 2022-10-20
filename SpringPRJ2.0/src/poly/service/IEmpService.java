@@ -8,4 +8,6 @@ public interface IEmpService {
 
 	List<EmpDTO> getEmpList();
 
+	List<EmpDTO> businessList();
+
 }

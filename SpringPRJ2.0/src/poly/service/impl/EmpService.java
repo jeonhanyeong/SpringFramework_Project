@@ -22,4 +22,9 @@ public class EmpService implements IEmpService{
 		return empMapper.getEmpList();
 	}
 
+	@Override
+	public List<EmpDTO> businessList() {
+		// TODO Auto-generated method stub
+		return empMapper.businessList();
+	}
 } 

@@ -96,7 +96,7 @@
   display: inline-block;
 }
 
-#box {
+.business-card-box .box {
   width: 20%;
   border-radius: 8px;
   overflow: hidden;
@@ -108,17 +108,17 @@
   margin-left: 2%;
 }
 
-#box:hover {
+.business-card-box .box:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   transform: translateY(-10px);
 }
 
-#box * {
+.business-card-box .box * {
   padding: 10px;
   
 }
 
-#box .img {
+.business-card-box .box .img {
   display: block;
   width: 40%;
   height: 40%;
@@ -126,11 +126,11 @@
   padding: auto;
 }
 
-#box .heading {
+.business-card-box .box .heading {
   font-size: 28px;
 }
 
-#box .data {
+.business-card-box .box .data {
   display: flex;
   flex-direction: column;
   font-size: 12px;
@@ -138,13 +138,13 @@
   text-align: center;
 }
 
-#box .texts {
+.business-card-box .box .texts {
   font-size: 14px;
   line-height: 18px;
   text-align: center;
 }
 
-.business-count{
+.business-card-box .business-count{
   font-size: 30px;
   text-align: center;
   display: inline;

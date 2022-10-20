@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,7 +22,70 @@
     <link rel="stylesheet" href="../resource/css/responsive.css">
     <link rel="stylesheet" href="../resource/css/myPageStyle.css">
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function () {
+	$("#all-business").on('click', function() {
+		businessLog();
+	});
+	
+});
+<%--	
+function businessLog() {
 
+	$.ajax({
+        url: "businessLog",
+        dataType: "json",
+        type: "POST",
+        success: function(data){
+           if (data.Code == 0 ) {
+	        	for (i=0; i<data.data.length; i++ ) {
+	            	var tag = "<tr>" + 
+		   	                   		"<td>" + data.data[i].empno + "</td>" + 
+		   	                   		"<td>" + data.data[i].ename + "</td>" +
+		   	                   		"<td>" + data.data[i].job + "</td>" +
+		   	                   		"<td>" + data.data[i].mgr + "</td>" +
+		   	               	    	"<td>" + data.data[i].hiredate + "</td>" +
+		   	               			"<td>" + data.data[i].sal + "</td>" +
+		   	              			"<td>" + data.data[i].comm + "</td>" +
+		   	           				"<td>" + data.data[i].deptno + "</td>" +
+	   	                   	  "</tr>"           	  
+	   	            $("#business-Log").append(tag);
+	            }
+           } else {
+        	   alert(data.Msg);
+           }
+        },
+        error : function(request,status,error){
+
+        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+        	}
+  	});
+}
+--%>
+function businessLog() {
+
+	$.ajax({
+        url: "businessLog",
+        dataType: "json",
+        type: "POST",
+        success: function(data){
+          
+	            	var tag = "<tr>" + 
+		   	                   		"<td>" + data + "</td>" + 
+	   	                   	  "</tr>"           	  
+	   	            $("#business-Log").append(tag);
+           }
+        },
+        error : function(request,status,error){
+
+        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+
+        	}
+  	});
+}
+</script>
 <body>
 
     <!--================Header Menu Area =================-->
@@ -135,28 +199,28 @@
         <br /><br /><br /><br />
         <h1>사업현황</h1>
         <div class="business-card-box" style="padding: auto;">
-            <div id="box">
+            <div class="box" id="all-business">
                 <img class="img" src="../resource/img/mypage/allSelect.png" alt="">
                 <h1 class="heading">전체 사업</h1>
                 <p class="texts">
                 <p class="business-count">0</p><strong>건</strong>
                 </p>
             </div>
-            <div id="box">
+            <div class="box" id="wait-business">
                 <img class="img" src="../resource/img/mypage/wait.png" alt="">
                 <h1 class="heading">입찰 대기 사업</h1>
                 <p class="texts">
                 <p class="business-count">0</p><strong>건</strong>
                 </p>
             </div>
-            <div id="box">
+            <div class="box" id="progress-business">
                 <img class="img" src="../resource/img/mypage/progress.png" alt="">
                 <h1 class="heading">진행중 사업</h1>
                 <p class="texts">
                 <p class="business-count">0</p><strong>건</strong>
                 </p>
             </div>
-            <div id="box">
+            <div class="box" id="complete-business">
                 <img class="img" src="../resource/img/mypage/complete.png" alt="">
                 <h1 class="heading">완료 사업</h1>
                 <p class="texts">
@@ -165,8 +229,7 @@
             </div>
         </div>
         <div class="business-table">
-            <table>
-                <thead>
+            <table id="business-Log">
                     <tr>
                         <th>번호</th>
                         <th>사업명</th>
@@ -174,100 +237,7 @@
                         <th>총예산</th>
                         <th>기간</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>8</td>
-                        <td>Marco Belinelli</td>
-                        <td>G</td>
-                        <td>6-5</td>
-                        <td>195</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Carlos Boozer</td>
-                        <td>F</td>
-                        <td>6-9</td>
-                        <td>266</td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td>Jimmy Butler</td>
-                        <td>G-F</td>
-                        <td>6-7</td>
-                        <td>220</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Luol Deng</td>
-                        <td>F</td>
-                        <td>6-9</td>
-                        <td>220</td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td>Taj Gibson</td>
-                        <td>F</td>
-                        <td>6-9</td>
-                        <td>225</td>
-                    </tr>
-                    <tr>
-                        <td>32</td>
-                        <td>Richard Hamilton</td>
-                        <td>G</td>
-                        <td>6-7</td>
-                        <td>193</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>Kirk Hinrich</td>
-                        <td>G</td>
-                        <td>6-4</td>
-                        <td>190</td>
-                    </tr>
-                    <tr>
-                        <td>48</td>
-                        <td>Nazr Mohammed</td>
-                        <td>C</td>
-                        <td>6-10</td>
-                        <td>250</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>Joakim Noah</td>
-                        <td>C</td>
-                        <td>6-11</td>
-                        <td>232</td>
-                    </tr>
-                    <tr>
-                        <td>77</td>
-                        <td>Vladimir Radmanovic</td>
-                        <td>F</td>
-                        <td>6-10</td>
-                        <td>235</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Nate Robinson</td>
-                        <td>G</td>
-                        <td>5-9</td>
-                        <td>180</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Derrick Rose</td>
-                        <td>G</td>
-                        <td>6-3</td>
-                        <td>190</td>
-                    </tr>
-                    <tr>
-                        <td>25</td>
-                        <td>Marquis Teague</td>
-                        <td>G</td>
-                        <td>6-2</td>
-                        <td>190</td>
-                    </tr>
-                </tbody>
+                
             </table>
 
         </div>

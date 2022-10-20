@@ -10,4 +10,6 @@ public interface IEmpMapper {
 
 	List<EmpDTO> getEmpList();
 
+	List<EmpDTO> businessList();
+
 }
