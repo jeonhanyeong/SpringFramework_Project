@@ -67,7 +67,6 @@
   left: 65%;
   padding: auto;
   margin-top: 1%;
-  color: white;
 }
 
 #info-delete-btn{
@@ -96,7 +95,7 @@
   display: inline-block;
 }
 
-.business-card-box .box {
+.box {
   width: 20%;
   border-radius: 8px;
   overflow: hidden;
@@ -108,17 +107,17 @@
   margin-left: 2%;
 }
 
-.business-card-box .box:hover {
+.box:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   transform: translateY(-10px);
 }
 
-.business-card-box .box * {
+.box * {
   padding: 10px;
   
 }
 
-.business-card-box .box .img {
+.box .img {
   display: block;
   width: 40%;
   height: 40%;
@@ -126,11 +125,11 @@
   padding: auto;
 }
 
-.business-card-box .box .heading {
+.box .heading {
   font-size: 28px;
 }
 
-.business-card-box .box .data {
+.box .data {
   display: flex;
   flex-direction: column;
   font-size: 12px;
@@ -138,52 +137,51 @@
   text-align: center;
 }
 
-.business-card-box .box .texts {
+.box .texts {
   font-size: 14px;
   line-height: 18px;
   text-align: center;
 }
 
-.business-card-box .business-count{
+.business-count{
   font-size: 30px;
   text-align: center;
   display: inline;
 }
 
-table {
+.business-table table {
   border-collapse: separate;
   border-spacing: 0;
   width: 60%;
   margin: auto;
 }
-th,
-td {
+.business-table th, td {
   padding: 6px 15px;
 }
-th {
+.business-table th {
   background: #008000;
   color: #fff;
   text-align: left;
 }
-tr:first-child th:first-child {
+.business-table tr:first-child th:first-child {
   border-top-left-radius: 6px;
 }
-tr:first-child th:last-child {
+.business-table tr:first-child th:last-child {
   border-top-right-radius: 6px;
 }
-td {
+.business-table td {
   border-right: 1px solid #c6c9cc;
   border-bottom: 1px solid #c6c9cc;
 }
-td:first-child {
+.business-table td:first-child {
   border-left: 1px solid #c6c9cc;
 }
-tr:nth-child(even) td {
+.business-table tr:nth-child(even) td {
   background: #eaeaed;
 }
-tr:last-child td:first-child {
+.business-table tr:last-child td:first-child {
   border-bottom-left-radius: 6px;
 }
-tr:last-child td:last-child {
+.business-table tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
 }

@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,71 +20,71 @@
     <link rel="stylesheet" href="../resource/css/style.css">
     <link rel="stylesheet" href="../resource/css/responsive.css">
     <link rel="stylesheet" href="../resource/css/myPageStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type ="text/javascript">
+  	
+  	function loadJson(){
+  		$.ajax({
+  			url:"/ajaxBusinessList.do",
+  			type:"get",
+  			dataType:"json",
+  			success: ajaxHtml,
+  			error:function(){alert("error");}
+  		});
+  	}
+  	
+  	function loadJsonTwo(){
+  		$.ajax({
+  			url:"/ajaxBusinessList2.do",
+  			type:"get",
+  			dataType:"json",
+  			success: ajaxHtml,
+  			error:function(){alert("error");}
+  		});
+  	}
+  	
+  	function loadJsonThree(){
+  		$.ajax({
+  			url:"/ajaxBusinessList3.do",
+  			type:"get",
+  			dataType:"json",
+  			success: ajaxHtml,
+  			error:function(){alert("error");}
+  		});
+  	}
+  	
+  	function ajaxHtml(data){
+  		var html="<table>";
+  		html+="<tr>";
+  		html+="<th>1</th>";
+  		html+="<th>2</th>";
+  		html+="<th>3</th>";
+  		html+="<th>4</th>";
+  		html+="<th>5</th>";
+  		html+="<th>6</th>";  	
+  		html+="<th>7</th>";  
+  		html+="</tr>";
+  		
+  		$.each(data, (index, obj)=>{ 
+  			html+="<tr>";
+  	  		html+="<td>"+obj.public_official_no+"</td>";
+  	  		html+="<td>"+obj.public_official_id+"</td>";
+  	  		html+="<td>"+obj.password+"</td>";
+  	  		html+="<td>"+obj.name+"</td>";
+  	  		html+="<td>"+obj.affiliated_department+"</td>";
+  	  		html+="<td>"+obj.public_official_tel+"</td>";
+  	  		html+="<td>"+obj.cities_no+"</td>";
+  	  		html+="</tr>";
+  		})
+  		html+="</table>";
+  		
+  		$("#ajaxBusinessList").html(html);
+  	}
+  
+  </script>
+      
 </head>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$(document).ready(function () {
-	$("#all-business").on('click', function() {
-		businessLog();
-	});
-	
-});
-<%--	
-function businessLog() {
 
-	$.ajax({
-        url: "businessLog",
-        dataType: "json",
-        type: "POST",
-        success: function(data){
-           if (data.Code == 0 ) {
-	        	for (i=0; i<data.data.length; i++ ) {
-	            	var tag = "<tr>" + 
-		   	                   		"<td>" + data.data[i].empno + "</td>" + 
-		   	                   		"<td>" + data.data[i].ename + "</td>" +
-		   	                   		"<td>" + data.data[i].job + "</td>" +
-		   	                   		"<td>" + data.data[i].mgr + "</td>" +
-		   	               	    	"<td>" + data.data[i].hiredate + "</td>" +
-		   	               			"<td>" + data.data[i].sal + "</td>" +
-		   	              			"<td>" + data.data[i].comm + "</td>" +
-		   	           				"<td>" + data.data[i].deptno + "</td>" +
-	   	                   	  "</tr>"           	  
-	   	            $("#business-Log").append(tag);
-	            }
-           } else {
-        	   alert(data.Msg);
-           }
-        },
-        error : function(request,status,error){
-
-        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-        	}
-  	});
-}
---%>
-function businessLog() {
-
-	$.ajax({
-        url: "businessLog",
-        dataType: "json",
-        type: "POST",
-        success: function(data){
-          
-	            	var tag = "<tr>" + 
-		   	                   		"<td>" + data + "</td>" + 
-	   	                   	  "</tr>"           	  
-	   	            $("#business-Log").append(tag);
-           }
-        },
-        error : function(request,status,error){
-
-        	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-
-        	}
-  	});
-}
-</script>
 <body>
 
     <!--================Header Menu Area =================-->
@@ -199,28 +198,28 @@ function businessLog() {
         <br /><br /><br /><br />
         <h1>사업현황</h1>
         <div class="business-card-box" style="padding: auto;">
-            <div class="box" id="all-business">
+            <div class="box" id="allBusiness" onclick="loadJson()">
                 <img class="img" src="../resource/img/mypage/allSelect.png" alt="">
                 <h1 class="heading">전체 사업</h1>
                 <p class="texts">
                 <p class="business-count">0</p><strong>건</strong>
                 </p>
             </div>
-            <div class="box" id="wait-business">
+            <div class="box" id="waitBusiness" onclick="loadJsonTwo()">
                 <img class="img" src="../resource/img/mypage/wait.png" alt="">
                 <h1 class="heading">입찰 대기 사업</h1>
                 <p class="texts">
                 <p class="business-count">0</p><strong>건</strong>
                 </p>
             </div>
-            <div class="box" id="progress-business">
+            <div class="box" id="processBusiness" onclick="loadJsonThree()">
                 <img class="img" src="../resource/img/mypage/progress.png" alt="">
                 <h1 class="heading">진행중 사업</h1>
                 <p class="texts">
                 <p class="business-count">0</p><strong>건</strong>
                 </p>
             </div>
-            <div class="box" id="complete-business">
+            <div class="box" id="completeBusiness" onclick="">
                 <img class="img" src="../resource/img/mypage/complete.png" alt="">
                 <h1 class="heading">완료 사업</h1>
                 <p class="texts">
@@ -228,19 +227,10 @@ function businessLog() {
                 </p>
             </div>
         </div>
-        <div class="business-table">
-            <table id="business-Log">
-                    <tr>
-                        <th>번호</th>
-                        <th>사업명</th>
-                        <th>담당자</th>
-                        <th>총예산</th>
-                        <th>기간</th>
-                    </tr>
-                
-            </table>
-
+        <div class="business-table" id="ajaxBusinessList">
+           
         </div>
+        
     </section>
     <!--================Contact Area =================-->
 

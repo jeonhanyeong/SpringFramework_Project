@@ -142,7 +142,6 @@
 			</ul>
 		  </nav>
 		</div>
-		<a href="noticeWriting.do" class="primary-btn submit_btn" style="float:right;">글 작성</a>
 		<!--공지 페이지 넘기기 끝-->
 		</div>
 		</section>

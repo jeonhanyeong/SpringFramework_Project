@@ -1,14 +1,26 @@
 package poly.controller;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import poly.dto.EmpDTO;
+import poly.dto.GovPublicOfficialDTO;
+import poly.service.IMyPageService;
 
 @Controller
 public class MypageController {
 	private Logger log = Logger.getLogger(this.getClass());
-
-	// 임시로 페이지만 여는 파일
+	
+	  
+	  @Resource(name ="MyPageService") 
+	  IMyPageService mypageService;
+	  
 
 	// 마이페이지
 	@RequestMapping(value = "/mypage/mypage")
@@ -41,4 +53,24 @@ public class MypageController {
 
 		return "/mypage/mypageDelete";
 	}
+	
+	
+	  @RequestMapping("/ajaxBusinessList.do")
+	  public @ResponseBody List<GovPublicOfficialDTO> ajaxList(){
+		  List<GovPublicOfficialDTO> list = mypageService.getATListOne();
+		  return list;
+	  }
+	  @RequestMapping("/ajaxBusinessList2.do")
+	  public @ResponseBody List<GovPublicOfficialDTO> ajaxListTwo(){
+		  List<GovPublicOfficialDTO> list = mypageService.getATListTwo();
+		  return list;
+	  }
+	  @RequestMapping("/ajaxBusinessList3.do")
+	  public @ResponseBody List<GovPublicOfficialDTO> ajaxListThree(){
+		  List<GovPublicOfficialDTO> list = mypageService.getATListThree();
+		  return list;
+	  }
+	  
+	
+	
 }
