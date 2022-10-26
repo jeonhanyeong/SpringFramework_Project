@@ -19,9 +19,9 @@
 <link rel="stylesheet" href="/resource/vendors/animate-css/animate.css">
 <link rel="stylesheet" href="/resource/vendors/flaticon/flaticon.css">
 <!-- main css -->
+<link rel="stylesheet" href="/resource/css/login.css"> 
 <link rel="stylesheet" href="/resource/css/style.css">
 <link rel="stylesheet" href="/resource/css/responsive.css">
-<link rel="stylesheet" href="/resource/css/login.css"> 
 </head>
 
 <body>

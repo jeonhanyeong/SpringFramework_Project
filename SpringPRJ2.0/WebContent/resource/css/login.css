@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
 	background-color: #e9e9e9;
 	font-family: 'Montserrat', sans-serif;
@@ -374,6 +375,6 @@ body {
 	z-index: 1;
 }
 
-.join__forgot:hover { 
+.join__forgot:hover {
 	color: rgb(153, 255, 204);
 }
