@@ -15,6 +15,4 @@ SELECT * FROM public_official where cities_no = 4
 SELECT * FROM public_official where cities_no = 5
 </select>
 
-
- 
 </mapper>

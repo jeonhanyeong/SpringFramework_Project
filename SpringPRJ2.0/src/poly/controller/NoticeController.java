@@ -38,6 +38,13 @@ public class NoticeController {
 	 * method => 기입안하면 GET, POST 모두 가능하나, 가급적 적어주는 것이 좋다.
 	 * */
 	
+	@RequestMapping(value="login")
+	public String Login() {
+		log.info(this.getClass());
+		
+		return "/login";
+	}
+	
 	@RequestMapping(value="index")
 	public String Index() {
 		log.info(this.getClass());

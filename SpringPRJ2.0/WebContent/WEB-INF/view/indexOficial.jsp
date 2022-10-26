@@ -33,15 +33,6 @@
            					<a href="#">로그아웃</a>
            					<a href="#">공무원 님</a>
            				</div>
-						<!-- sns 영역
-           				<div class="float-right">
-           					<ul class="list header_socila">
-           						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-           						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-           						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-           						<li><a href="#"><i class="fa fa-behance"></i></a></li>
-           					</ul>
-           				</div>
 						-->
            			</div>
            		</div>
@@ -60,9 +51,9 @@
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
 								<li class="nav-item active"><a class="nav-link" href="/notice/notice.do">공지사항</a></li> 
-								<li class="nav-item"><a class="nav-link" href="about-us.html">진행현황</a></li>
+								<li class="nav-item"><a class="nav-link" href="/progress/progress.js">진행현황</a></li>
 								<li class="nav-item submenu dropdown">
-									<a href="govermentBoardTable.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
+									<a href="/govermentBoard/govermentBoardTable.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
 								</li> 
 								<li class="nav-item"><a class="nav-link" href="/mypage/mypage.do">마이페이지</a></li>
 							</ul>
