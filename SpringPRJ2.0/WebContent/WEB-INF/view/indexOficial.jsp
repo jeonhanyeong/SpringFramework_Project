@@ -30,10 +30,9 @@
            		<div class="container contaierColor">
            			<div class="top_inner">
            				<div class="float-left">
-           					<a href="#">로그아웃</a>
-           					<a href="#">공무원 님</a>
+                        <a href="/logout.do">로그아웃</a>
+                        <p>안녕하세요. ${sessionScope.loginID} 공무원님!</p>
            				</div>
-						-->
            			</div>
            		</div>
            	</div>

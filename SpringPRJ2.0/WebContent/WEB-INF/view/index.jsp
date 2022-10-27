@@ -30,7 +30,9 @@
            		<div class="container contaierColor">
            			<div class="top_inner">
            				<div class="float-left">
-           					<a href="#">로그아웃</a>
+           					<a href="/logout.do">로그아웃</a>
+           					<p>${sessionScope.loginID}님 ! 환영합니다.</p>
+           					<!-- <input type="hidden" name="sessionID" value="${sessionScope.loginID}"/> -->
            				</div>
            			</div>
            		</div>

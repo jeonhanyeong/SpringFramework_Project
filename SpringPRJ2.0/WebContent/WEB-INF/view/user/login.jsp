@@ -22,85 +22,94 @@
 <link rel="stylesheet" href="/resource/css/login.css"> 
 <link rel="stylesheet" href="/resource/css/style.css">
 <link rel="stylesheet" href="/resource/css/responsive.css">
+
 </head>
 
 <body>
-
+	
     <div class="login-wrap">
+    
+    
         <div class="login-html">
             <input id="tab-1" type="radio" name="tab" class="public" checked><label for="tab-1" class="tab">공무원</label>
             <input id="tab-2" type="radio" name="tab" class="land"><label for="tab-2" class="tab">원예/조경기업</label>
             <input id="tab-3" type="radio" name="tab" class="private"><label for="tab-3" class="tab">민간기업</label>
             <div class="login-form">
+            <form action ="govloginSuccess.do" method="post">
                 <div class="public-htm">
                     <div class="group">
                         <label for="user" class="label">ID</label>
-                        <input id="user" type="text" class="input">
+                        <input id="govID" name="public_official_id" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">Password</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="govPW" name="password" type="password" class="input" data-type="password">
                     </div>
                     <div class="group">
                         <input id="check" type="checkbox" class="check" checked>
                         <label for="check"><span class="icon"></span> 아이디 저장</label>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button"  onclick="location.href='index.jsp'" value="로그인">
+                        <input type="submit" class="button" value="로그인">
                         <br/>
-                        <input type="submit" class="button"  onclick="location.href='public-join.jsp'" value="회원가입">
+                        <input type="button" class="button" onclick="location.href='landJoin.do'" value="회원가입">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
-                        <a href="#forgot">비밀번호를 잊으셨나요?</a>
+                        <a href="findPassword.do">비밀번호를 잊으셨나요?</a>
                     </div>
                 </div>
+                </form>
+                <form action ="landloginSuccess.do" method="post">
                 <div class="land-htm">
                     <div class="group">
                         <label for="user" class="label">ID</label>
-                        <input id="user" type="text" class="input">
+                        <input id="landID" name="landscaping_enterprise_id" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">Password</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="landPW" name="landscaping_enterprise_pw" type="password" class="input" data-type="password">
                     </div>
                     <div class="group">
                         <input id="check" type="checkbox" class="check" checked>
                         <label for="check"><span class="icon"></span> 아이디 저장</label>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button" onclick="location.href='index.jsp'" value="로그인">
+                        <input type="submit" class="button" value="로그인">
                         <br/>
-                        <input type="submit" class="button" onclick="location.href='land-join.jsp'" value="회원가입">
+                        <input type="button" class="button" onclick="location.href='landJoin.do'" value="회원가입">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
-                        <a href="#forgot">비밀번호를 잊으셨나요?</a>
+                        <a href="findPassword.do">비밀번호를 잊으셨나요?</a>
                     </div>
                 </div>
+                 </form>
+                 <form action ="priloginSuccess.do" method="post">
                 <div class="private-htm">
                     <div class="group">
                         <label for="user" class="label">ID</label>
-                        <input id="user" type="text" class="input">
+                        <input id="priID" name="pri_enterprise_id" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">Password</label>
-                        <input id="pass" type="password" class="input" data-type="password">
+                        <input id="priPW" name="pri_enterprise_password" type="password" class="input" data-type="password">
                     </div>
                     <div class="group">
                         <input id="check" type="checkbox" class="check" checked>
                         <label for="check"><span class="icon"></span> 아이디 저장</label>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button"  onclick="location.href='indexOficial.jsp'" value="로그인">
+                        <input type="submit" class="button" value="로그인">
                         <br/>
-                        <input type="submit" class="button" onclick="location.href='private-join.jsp'" value="회원가입">
+                        <input type="button" class="button" onclick="location.href='landJoin.do'" value="회원가입">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
-                        <a href="#forgot">비밀번호를 잊으셨나요?</a>
+                        <a href="findPassword.do">비밀번호를 잊으셨나요?</a>
                     </div>
                 </div>
+                </form>
         </div>
         </div>
     </div>

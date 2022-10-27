@@ -93,7 +93,8 @@
             <div class="container">
                 <div class="top_inner">
                     <div class="float-left">
-                        <a href="#">로그아웃</a>
+                        <a href="/logout.do">로그아웃</a>
+                        <p>${sessionScope.loginID}님이 로그인중입니다.</p>
                     </div>
                     <div class="float-right">
                         <ul class="list header_socila">

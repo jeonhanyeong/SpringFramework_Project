@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.IMyPageMapper">
+
+<select id="getATListOne" resultType="GovPublicOfficialDTO">
+SELECT * FROM public_official
+</select>
+
+<select id="getATListTwo" resultType="GovPublicOfficialDTO">
+SELECT * FROM public_official where cities_no = 4
+</select>
+
+<select id="getATListThree" resultType="GovPublicOfficialDTO">
+SELECT * FROM public_official where cities_no = 5
+</select>
+
+</mapper>
