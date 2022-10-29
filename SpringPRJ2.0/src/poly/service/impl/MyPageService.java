@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import poly.dto.GovPublicOfficialDTO;
+import poly.dto.LandscapingDTO;
+import poly.dto.PriEnterpriseDTO;
 import poly.persistance.mapper.IMyPageMapper;
 import poly.service.IMyPageService;
 
@@ -15,6 +17,21 @@ public class MyPageService implements IMyPageService{
 	
 	@Resource(name="MyPageMapper")
 	IMyPageMapper myPageMapper;
+	
+	@Override
+	public List<LandscapingDTO> getlandDetail(String sessionID){
+		return myPageMapper.getlandDetail(sessionID);
+	}
+	
+	@Override
+	public List<GovPublicOfficialDTO> getgovDetail(String sessionID){
+		return myPageMapper.getgovDetail(sessionID);
+	}
+	
+	@Override
+	public List<PriEnterpriseDTO> getpriDetail(String sessionID){
+		return myPageMapper.getpriDetail(sessionID);
+	}
 
 	@Override
 	public List<GovPublicOfficialDTO> getATListOne() {

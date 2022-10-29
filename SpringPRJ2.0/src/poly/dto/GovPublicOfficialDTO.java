@@ -8,7 +8,21 @@ public class GovPublicOfficialDTO {
    private String affiliated_department;
    private String public_official_tel;
    private int cities_no;
+   private String metropolitan_city_name;
+   private String cities_name;
    
+   public String getCities_name() {
+	return cities_name;
+}
+public void setCities_name(String cities_name) {
+	this.cities_name = cities_name;
+}
+   public String getMetropolitan_city_name() {
+	return metropolitan_city_name;
+}
+public void setMetropolitan_city_name(String metropolitan_city_name) {
+	this.metropolitan_city_name = metropolitan_city_name;
+}
    
    public int getPublic_official_no() {
       return public_official_no;

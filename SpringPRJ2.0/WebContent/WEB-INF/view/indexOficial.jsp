@@ -31,7 +31,9 @@
            			<div class="top_inner">
            				<div class="float-left">
                         <a href="/logout.do">로그아웃</a>
-                        <p>안녕하세요. ${sessionScope.loginID} 공무원님!</p>
+                        <p>안녕하세요. ${sessionScope.sessionID} 공무원님!</p>
+                             <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
            				</div>
            			</div>
            		</div>
@@ -54,7 +56,7 @@
 								<li class="nav-item submenu dropdown">
 									<a href="/govermentBoard/govermentBoardTable.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
 								</li> 
-								<li class="nav-item"><a class="nav-link" href="/mypage/mypage.do">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
 							</ul>
 						</div> 
 					</div>

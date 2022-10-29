@@ -31,8 +31,9 @@
            			<div class="top_inner">
            				<div class="float-left">
            					<a href="/logout.do">로그아웃</a>
-           					<p>${sessionScope.loginID}님 ! 환영합니다.</p>
-           					<!-- <input type="hidden" name="sessionID" value="${sessionScope.loginID}"/> -->
+           					<p>${sessionScope.sessionID}님 ! 환영합니다.</p>
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
            				</div>
            			</div>
            		</div>
@@ -59,7 +60,7 @@
 										<li class="nav-item"><a class="nav-link" href="/board/sprivateProjectBoard.do">민간사업</a></li>
 									</ul>
 								</li> 
-								<li class="nav-item"><a class="nav-link" href="/mypage/mypage.do">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
 							</ul>
 						</div> 
 					</div>

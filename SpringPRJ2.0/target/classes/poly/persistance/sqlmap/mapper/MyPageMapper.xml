@@ -15,4 +15,43 @@ SELECT * FROM public_official where cities_no = 4
 SELECT * FROM public_official where cities_no = 5
 </select>
 
+<select id="getlandDetail" parameterType="String" resultType="LandscapingDTO">
+SELECT 
+field.field_of_business_name as field_of_business_name, 
+land.company_name as company_name, 
+land.company_tel as company_tel,
+land.business_registration_number as business_registration_number, 
+land.sales as sales, 
+land.available_staff as available_staff 
+FROM 
+field_of_business field, landscaping_enterprise land, landscaping_field_business lf 
+WHERE 
+land.landscaping_enterprise_no = lf.landscaping_enterprise_no 
+AND 
+lf.field_of_business_no = field.field_of_business_no 
+AND 
+land.landscaping_enterprise_id = #{sessionID}
+</select>
+
+<select id="getgovDetail" parameterType="String" resultType="GovPublicOfficialDTO">
+SELECT
+pub.name as name,
+pub.affiliated_department as affiliated_department,
+pub.public_official_tel as public_official_tel,
+ct.cities_name, 
+met.metropolitan_city_name 
+FROM
+public_official pub, cities ct, metropolitan_city met
+WHERE
+pub.public_official_id = #{sessionID} 
+AND
+pub.cities_no = ct.cities_no 
+AND
+ct.metropolitan_city_no = met.metropolitan_city_no
+</select>
+
+<select id="getpriDetail" parameterType="String" resultType="PriEnterpriseDTO">
+
+</select>
+
 </mapper>

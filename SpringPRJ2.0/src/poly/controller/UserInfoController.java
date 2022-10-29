@@ -41,7 +41,7 @@ public class UserInfoController {
 	// 조경원예기업 로그인
 	
 	@RequestMapping(value = "landloginSuccess" , method = RequestMethod.POST)
-	public @ResponseBody String landJoin(@RequestParam("landscaping_enterprise_id") String landscaping_enterprise_id, 
+	public String landJoin(@RequestParam("landscaping_enterprise_id") String landscaping_enterprise_id, 
 			@RequestParam("landscaping_enterprise_pw") String landscaping_enterprise_pw, HttpSession session) throws Exception{
 		log.info(this.getClass());
 		
@@ -56,11 +56,12 @@ public class UserInfoController {
         Integer result = loginservice.LandLogin(dto);
 
         if(result == 1) {
-        	session.setAttribute("loginID", dto.getLandscaping_enterprise_id());
+        	session.setAttribute("sessionID", dto.getLandscaping_enterprise_id());
+        	session.setAttribute("sessionPart", "land");
             path = "/index";
         } else {
            // path = "/user/login";
-        	path ="<script>alert('Login FAIL!!!');location.href='/\'</script>";
+        	path ="/user/login";
         	
         }
 
@@ -68,7 +69,7 @@ public class UserInfoController {
 	}
 	// 공무원 로그인
 	@RequestMapping(value = "govloginSuccess" , method = RequestMethod.POST)
-	public @ResponseBody String govJoin(@RequestParam("public_official_id") String public_official_id, 
+	public String govJoin(@RequestParam("public_official_id") String public_official_id, 
 			@RequestParam("password") String password, HttpSession session) throws Exception{
 		log.info(this.getClass());
 		
@@ -82,17 +83,18 @@ public class UserInfoController {
         Integer result = loginservice.GovLogin(dto);
 
         if(result == 1) {
-        	session.setAttribute("loginID", dto.getPublic_official_id());
+        	session.setAttribute("sessionID", dto.getPublic_official_id());
+        	session.setAttribute("sessionPart", "gov");
             path = "/indexOficial";
         } else {
-        	path ="<script>alert('Login FAIL!!!');location.href='/\'</script>";
+        	path ="/user/login";
         }
 
         return path;
 	}
 	// 민간기업 로그인
 	@RequestMapping(value = "priloginSuccess" , method = RequestMethod.POST)
-	public @ResponseBody String priJoin(@RequestParam("pri_enterprise_id") String pri_enterprise_id, 
+	public String priJoin(@RequestParam("pri_enterprise_id") String pri_enterprise_id, 
 			@RequestParam("pri_enterprise_password") String pri_enterprise_password, HttpSession session) throws Exception{
 		log.info(this.getClass());
 		
@@ -106,10 +108,11 @@ public class UserInfoController {
         Integer result = loginservice.PriLogin(dto);
 
         if(result == 1) {
-        	session.setAttribute("loginID", dto.getPri_enterprise_id());
+        	session.setAttribute("sessionID", dto.getPri_enterprise_id());
+        	session.setAttribute("sessionPart", "pri");
             path = "/index";
         } else {
-        	path ="<script>alert('Login FAIL!!!');location.href='/\'</script>";
+        	path ="/user/login";
         }
 
         return path;

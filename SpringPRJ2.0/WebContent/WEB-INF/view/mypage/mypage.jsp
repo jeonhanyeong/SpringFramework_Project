@@ -1,5 +1,13 @@
+<%@page import="poly.dto.LandscapingDTO"%>
+<%@page import="poly.dto.GovPublicOfficialDTO"%>
+<%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%
+ 	String sessionPart = (String)request.getAttribute("sessionPart");
+ 	
+ %>   
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -94,7 +102,7 @@
                 <div class="top_inner">
                     <div class="float-left">
                         <a href="/logout.do">로그아웃</a>
-                        <p>${sessionScope.loginID}님이 로그인중입니다.</p>
+                        <p>${sessionScope.sessionID}님이 로그인중입니다. ${sessionScope.sessionPart}</p>
                     </div>
                     <div class="float-right">
                         <ul class="list header_socila">
@@ -168,32 +176,68 @@
     <!--================Contact Area =================-->
     <section class="contact_area p_120">
         <h1>기업정보</h1><br />
-        
-        <div class="info-container">
+        <%
+        if(sessionPart.equals("land")){
+     		List<LandscapingDTO> Llist = (List<LandscapingDTO>)request.getAttribute("Detail");
+     		for(LandscapingDTO dto : Llist){%>
+     			 <div class="info-container">
             <div class="flex-item" id="company_part">
                 <p class="info-label">분야</p>
-                <p class="info-label" id="info-text">공원조경</p>
+                <p class="info-label" id="info-text"><%= dto.getField_of_business_name() %></p>
             </div>
             <div class="flex-item" id="company_name">
                 <p class="info-label">기업명</p>
-                <p class="info-label" id="info-text">준오헤어</p>
+                <p class="info-label" id="info-text"><%= dto.getCompany_name() %></p>
             </div>
             <div class="flex-item" id="company_ceo">
-                <p class="info-label">대표자</p>
-                <p class="info-label" id="info-text">김준오</p>
+                <p class="info-label">가용인원수</p>
+                <p class="info-label" id="info-text"><%= dto.getAvailable_staff() %></p>
             </div>
             <div class="flex-item" id="company_number">
                 <p class="info-label">사업자번호</p>
-                <p class="info-label" id="info-text">6052-142421-421</p>
+                <p class="info-label" id="info-text"><%= dto.getBusiness_registration_number() %></p>
             </div>
             <div class="flex-item" id="company_date">
-                <p class="info-label">설립일자</p>
-                <p class="info-label" id="info-text">1974-08-20</p>
+                <p class="info-label">전화번호</p>
+                <p class="info-label" id="info-text"><%= dto.getCompany_tel() %></p>
             </div>
             <div class="flex-item" id="company_addr">
-                <p class="info-label">주소</p>
-                <p class="info-label" id="info-text">서울특별시 강남구 역삼동</p>
+                <p class="info-label">매출액</p>
+                <p class="info-label" id="info-text"><%= dto.getSales() %></p>
             </div>
+     			
+     			
+     		<% } 
+     	}
+     	else if(sessionPart.equals("gov")){
+     		List<GovPublicOfficialDTO> gList = (List<GovPublicOfficialDTO>)request.getAttribute("Detail");
+			for(GovPublicOfficialDTO dto : gList){ %>
+     			 <div class="info-container">
+            <div class="flex-item" id="company_part">
+                <p class="info-label">이름</p>
+                <p class="info-label" id="info-text"><%= dto.getName() %></p>
+            </div>
+            <div class="flex-item" id="company_name">
+                <p class="info-label">소속부서</p>
+                <p class="info-label" id="info-text"><%= dto.getAffiliated_department() %></p>
+            </div>
+            <div class="flex-item" id="company_ceo">
+                <p class="info-label">전화번호</p>
+                <p class="info-label" id="info-text"><%= dto.getPublic_official_tel() %></p>
+            </div>
+            <div class="flex-item" id="company_number">
+                <p class="info-label">주소</p>
+                <p class="info-label" id="info-text"><%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %></p>
+            </div>
+
+     		<% }
+     	}
+     	else
+     		sessionPart = "22";
+        
+        
+         %>
+       
             <a class="banner_btn" id="info-modify-btn" href="mypageModify.do">개인정보수정</a>
         </div>
         <br /><br /><br /><br />

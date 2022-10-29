@@ -11,7 +11,14 @@ public class LandscapingDTO {
 	private int available_staff;
 	private int sales;
 	private int cities_no;
+	private String field_of_business_name;
 	
+	public String getField_of_business_name() {
+		return field_of_business_name;
+	}
+	public void setField_of_business_name(String field_of_business_name) {
+		this.field_of_business_name = field_of_business_name;
+	}
 	public int getLandscaping_enterprise_no() {
 		return landscaping_enterprise_no;
 	}
