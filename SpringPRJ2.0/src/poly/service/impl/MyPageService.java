@@ -32,6 +32,11 @@ public class MyPageService implements IMyPageService{
 	public List<PriEnterpriseDTO> getpriDetail(String sessionID){
 		return myPageMapper.getpriDetail(sessionID);
 	}
+	
+	@Override
+	public List<String> getPartName(){
+		return myPageMapper.getPartName();
+	}
 
 	@Override
 	public List<GovPublicOfficialDTO> getATListOne() {

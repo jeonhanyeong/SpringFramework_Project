@@ -15,6 +15,8 @@ public interface IMyPageMapper {
 	List<GovPublicOfficialDTO> getATListTwo();
 	
 	List<GovPublicOfficialDTO> getATListThree();
+	
+	List<String> getPartName();
 
 	List<LandscapingDTO> getlandDetail(String sessionID);
 

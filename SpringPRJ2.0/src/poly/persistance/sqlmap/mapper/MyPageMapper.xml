@@ -51,7 +51,24 @@ ct.metropolitan_city_no = met.metropolitan_city_no
 </select>
 
 <select id="getpriDetail" parameterType="String" resultType="PriEnterpriseDTO">
+SELECT 
+pri.pri_enterprise_name as pri_enterprise_name, 
+pri.pri_enterprise_tel as pri_enterprise_tel, 
+pri.pri_registration_number as pri_registration_number, 
+ct.cities_name, 
+met.metropolitan_city_name 
+FROM 
+pri_enterprise pri, cities ct, metropolitan_city met 
+WHERE
+pri.pri_enterprise_id = #{sessionID} 
+AND 
+pri.cities_no = ct.cities_no 
+AND 
+ct.metropolitan_city_no = met.metropolitan_city_no
+</select>
 
+<select id="getPartName" resultType="String">
+SELECT field_of_business_name from field_of_business
 </select>
 
 </mapper>

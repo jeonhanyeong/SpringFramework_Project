@@ -13,6 +13,8 @@ public interface IMyPageService {
 	List<GovPublicOfficialDTO> getgovDetail(String sessionID);
 	//민간기업 상세정보
 	List<PriEnterpriseDTO> getpriDetail(String sessionID);
+	
+	List<String> getPartName();
 
 	List<GovPublicOfficialDTO> getATListOne();
 

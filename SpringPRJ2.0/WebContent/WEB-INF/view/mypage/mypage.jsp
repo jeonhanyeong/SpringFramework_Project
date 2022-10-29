@@ -1,5 +1,6 @@
 <%@page import="poly.dto.LandscapingDTO"%>
 <%@page import="poly.dto.GovPublicOfficialDTO"%>
+<%@page import="poly.dto.PriEnterpriseDTO"%>
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -102,7 +103,8 @@
                 <div class="top_inner">
                     <div class="float-left">
                         <a href="/logout.do">로그아웃</a>
-                        <p>${sessionScope.sessionID}님이 로그인중입니다. ${sessionScope.sessionPart}</p>
+                        <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+                        <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
                     </div>
                     <div class="float-right">
                         <ul class="list header_socila">
@@ -189,19 +191,19 @@
                 <p class="info-label">기업명</p>
                 <p class="info-label" id="info-text"><%= dto.getCompany_name() %></p>
             </div>
-            <div class="flex-item" id="company_ceo">
+            <div class="flex-item" id="company_people">
                 <p class="info-label">가용인원수</p>
                 <p class="info-label" id="info-text"><%= dto.getAvailable_staff() %></p>
             </div>
-            <div class="flex-item" id="company_number">
+            <div class="flex-item" id="company_regist_number">
                 <p class="info-label">사업자번호</p>
                 <p class="info-label" id="info-text"><%= dto.getBusiness_registration_number() %></p>
             </div>
-            <div class="flex-item" id="company_date">
+            <div class="flex-item" id="company_tel">
                 <p class="info-label">전화번호</p>
                 <p class="info-label" id="info-text"><%= dto.getCompany_tel() %></p>
             </div>
-            <div class="flex-item" id="company_addr">
+            <div class="flex-item" id="company_sale">
                 <p class="info-label">매출액</p>
                 <p class="info-label" id="info-text"><%= dto.getSales() %></p>
             </div>
@@ -213,31 +215,48 @@
      		List<GovPublicOfficialDTO> gList = (List<GovPublicOfficialDTO>)request.getAttribute("Detail");
 			for(GovPublicOfficialDTO dto : gList){ %>
      			 <div class="info-container">
-            <div class="flex-item" id="company_part">
+            <div class="flex-item" id="gov_name">
                 <p class="info-label">이름</p>
                 <p class="info-label" id="info-text"><%= dto.getName() %></p>
             </div>
-            <div class="flex-item" id="company_name">
+            <div class="flex-item" id="gov_part">
                 <p class="info-label">소속부서</p>
                 <p class="info-label" id="info-text"><%= dto.getAffiliated_department() %></p>
             </div>
-            <div class="flex-item" id="company_ceo">
+            <div class="flex-item" id="gov_tel">
                 <p class="info-label">전화번호</p>
                 <p class="info-label" id="info-text"><%= dto.getPublic_official_tel() %></p>
             </div>
-            <div class="flex-item" id="company_number">
+            <div class="flex-item" id="gov_addr">
                 <p class="info-label">주소</p>
                 <p class="info-label" id="info-text"><%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %></p>
             </div>
 
      		<% }
      	}
-     	else
-     		sessionPart = "22";
-        
-        
-         %>
-       
+     	else if(sessionPart.equals("pri")){ 
+        	List<PriEnterpriseDTO> pList = (List<PriEnterpriseDTO>)request.getAttribute("Detail");
+        	for(PriEnterpriseDTO dto : pList) { %>
+     			 <div class="info-container">
+            <div class="flex-item" id="pri_name">
+                <p class="info-label">기업명</p>
+                <p class="info-label" id="info-text"><%= dto.getPri_enterprise_name() %></p>
+            </div>
+            <div class="flex-item" id="pri_tel">
+                <p class="info-label">전화번호</p>
+                <p class="info-label" id="info-text"><%= dto.getPri_enterprise_tel() %></p>
+            </div>
+            <div class="flex-item" id="pri_regist_number">
+                <p class="info-label">사업자등록번호</p>
+                <p class="info-label" id="info-text"><%= dto.getPri_registration_number() %></p>
+            </div>
+            <div class="flex-item" id="pri_addr">
+                <p class="info-label">주소</p>
+                <p class="info-label" id="info-text"><%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %></p>
+            </div> 
+
+     		<% }
+     	}%>
             <a class="banner_btn" id="info-modify-btn" href="mypageModify.do">개인정보수정</a>
         </div>
         <br /><br /><br /><br />

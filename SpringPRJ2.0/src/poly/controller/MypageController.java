@@ -61,16 +61,47 @@ public class MypageController {
 		  }else {
 			  List<PriEnterpriseDTO> priList = mypageService.getpriDetail(sessionID);
 			  model.addAttribute("Detail", priList);
+			  model.addAttribute("sessionPart", "pri");
 		  }
 
 		return "/mypage/mypage";
 	}
 
 	// 개인정보수정 페이지
-	@RequestMapping(value = "/mypage/mypageModify")
-	public String mypageModify() {
+	@RequestMapping(value = "mypageModify", method = RequestMethod.GET)
+	public String mypageModify(HttpServletRequest request, HttpSession session, ModelMap model ) {
 		log.info(this.getClass());
-
+		//전 페이지에서 세션값 받아오기
+		  String sessionID = (String) request.getSession().getAttribute("sessionID");
+		  String sessionPart = (String) request.getSession().getAttribute("sessionPart");
+		//전 페이지에서 받아온 세션값 현재 페이지 세션에 저장
+		  session.setAttribute("sessionID", sessionID);
+		  session.setAttribute("sessionPart", sessionPart);
+		  
+		  //LandscapingDTO landdto = new LandscapingDTO();
+		  //GovPublicOfficialDTO govdto = new GovPublicOfficialDTO();
+		  //PriEnterpriseDTO pridto = new PriEnterpriseDTO();
+		  
+		  
+		  //세션값이 land(조경원예기업)일 경우
+		  if(sessionPart.equals("land")) {
+			  List<String> partList = mypageService.getPartName();
+			  List<LandscapingDTO> landList = mypageService.getlandDetail(sessionID);
+			  model.addAttribute("landpartList", partList);
+			  model.addAttribute("Detail", landList);
+			  model.addAttribute("sessionPart", "land");
+		  //세션값이 gov(공무원)일 경우  
+		  }else if(sessionPart.equals("gov")) {
+			  List<GovPublicOfficialDTO> govList = mypageService.getgovDetail(sessionID);
+			  model.addAttribute("Detail", govList);
+			  model.addAttribute("sessionPart", "gov");
+		  //세션값이 pri(민간기업)일 경우   
+		  }else {
+			  List<PriEnterpriseDTO> priList = mypageService.getpriDetail(sessionID);
+			  model.addAttribute("Detail", priList);
+			  model.addAttribute("sessionPart", "pri");
+		  }
+		  
 		return "/mypage/mypageModify";
 	}
 
