@@ -29,7 +29,8 @@
 </head>
 
 <body>
-
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
   <!--================Home Banner Area =================-->
         <section class="banner_area">
             <div class="banner_inner d-flex align-items-center">

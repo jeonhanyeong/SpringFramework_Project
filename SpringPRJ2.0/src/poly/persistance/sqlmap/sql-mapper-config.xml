@@ -7,5 +7,12 @@
 		<typeAlias type="poly.dto.GovPublicOfficialDTO" alias="GovPublicOfficialDTO"/>
 		<typeAlias type="poly.dto.LandscapingDTO" alias="LandscapingDTO"/>
 		<typeAlias type="poly.dto.PriEnterpriseDTO" alias="PriEnterpriseDTO"/>
+		<typeAlias type="poly.dto.GovBiddingDTO" alias="GovBiddingDTO"/>
+		<typeAlias type="poly.dto.GovBoardDTO" alias="GovBoardDTO"/>
+		<typeAlias type="poly.dto.PriBiddingRequestListDTO" alias="PriBiddingRequestListDTO"/>
+		<typeAlias type="poly.dto.PriboardDTO" alias="PriboardDTO"/>
+		<typeAlias type="poly.dto.TableDTO" alias="TableDTO"/>
+		<typeAlias type="poly.dto.UserInfoDTO" alias="UserInfoDTO"/>
+		<typeAlias type="poly.dto.NoticeDTO" alias="NoticeDTO"/>
     </typeAliases>
 </configuration>

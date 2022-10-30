@@ -1,5 +1,18 @@
+<%@ page import="java.util.List" %>
+<%@ page import="poly.dto.GovBoardDTO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="poly.dto.GovBoardDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     
+<% 
+	List<GovBoardDTO> gbList = (List<GovBoardDTO>)request.getAttribute("gbList");
+
+	if(gbList==null) {
+		gbList = new ArrayList<GovBoardDTO>();
+	}
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -8,7 +21,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="img/favicon.png" type="image/png">
-    <title>Woodrox Furniture</title>
+    <title>governmentBoardTable</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/resource/css/bootstrap.css">
     <link rel="stylesheet" href="/resource/vendors/linericon/style.css">
@@ -35,65 +48,51 @@
 </head>
 
 <body>
-
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
     <!--================Header Menu Area =================-->
-    <header class="header_area">
-        <div class="top_menu">
-            <div class="container contaierColor">
-                <div class="top_inner">
-                    <div class="float-left">
-                        <a href="#">로그아웃</a>
-                    </div>
-                 <!-- sns 영역
-                    <div class="float-right">
-                        <ul class="list header_socila">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                    </div>
-                 -->
-                </div>
+      <header class="header_area">
+           	<div class="top_menu">
+           		<div class="container contaierColor">
+           			<div class="top_inner">
+           				<div class="float-left">
+           					<a href="/logout.do">로그아웃</a>
+           					<p>${sessionScope.sessionID}님 ! 환영합니다.</p>
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
+           				</div>
+           			</div>
+           		</div>
+           	</div>
+            <div class="main_menu" id="mainNav">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo-2.png" alt=""><img src="img/logo-2.png" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="/notice/notice.do">공지사항</a></li> 
+								<li class="nav-item"><a class="nav-link" href="business_progress.do">진행현황</a></li>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="governmentBoard/governmentBoardTable.do">정부사업</a></li>
+										<li class="nav-item"><a class="nav-link" href="/privateBoard/privateBoardTable.do">민간사업</a></li>
+									</ul>
+								</li> 
+								<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
+							</ul>
+						</div> 
+					</div>
+            	</nav>
             </div>
-        </div>
-     <div class="main_menu" id="mainNav">
-         <nav class="navbar navbar-expand-lg navbar-light">
-             <div class="container">
-                 <!-- Brand and toggle get grouped for better mobile display -->
-                 <a class="navbar-brand logo_h" href="index.html"><img src="img/logo-2.png" alt=""><img src="img/logo-2.png" alt=""></a>
-                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                 </button>
-                 <!-- Collect the nav links, forms, and other content for toggling -->
-                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                     <ul class="nav navbar-nav menu_nav ml-auto">
-                         <li class="nav-item active"><a class="nav-link" href="index.html">공지사항</a></li> 
-                         <li class="nav-item"><a class="nav-link" href="about-us.html">진행현황</a></li>
-                         <!--<li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-                             <ul class="dropdown-menu">
-                                 <li class="nav-item"><a class="nav-link" href="projects.html">Project</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="project-details.html">Project Details</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-                             </ul>
-                         </li> -->
-                         <li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
-                             <ul class="dropdown-menu">
-                                 <li class="nav-item"><a class="nav-link" href="blog.html">정부사업</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="single-blog.html">민간사업</a></li>
-                             </ul>
-                         </li> 
-                         <li class="nav-item"><a class="nav-link" href="contact.html">마이페이지</a></li>
-                     </ul>
-                 </div> 
-             </div>
-         </nav>
-     </div>
- </header>
+        </header>
  <!--================Header Menu Area =================-->
 
     <!--================Home Banner Area =================-->
@@ -139,7 +138,7 @@
             <div style="right:0%; width: 400px;">
             <input type="text">
             <a class="banner_btn" href="#" style="width:20%; line-height: 30px;">검색</a>
-            <a class="banner_btn" href="govermentBoardRegist.html" style="width:30%; line-height: 30px;">글 작성하기</a>
+            <a class="banner_btn" href="opengovernmentBoardRegist.do" style="width:30%; line-height: 30px;">글 작성하기</a>
             </div>
             <!-- <li id="board_write"><a href="#" id="write_text">글 작성하기 <i class="fa fa-heart-o" aria-hidden="true"></i></a></li> -->
             <!-- <li><a href="#">글 작성하기<i class="lnr lnr-calendar-full"></i></a></li> -->
@@ -148,34 +147,32 @@
         </ul>
 
         <table class="table table-striped" id="table1">
-            <thead>
+       
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">제목</th>
                     <th scope="col">일시</th>
                     <th scope="col">회사명</th>
                 </tr>
-            </thead>
+                
+              <%if(gbList.isEmpty()) {%>
+              <tr><td colspan="5"> 등록된 게시물이 없습니다. </td></tr>
+              <%} else { %>
+              	<%for (GovBoardDTO gbDTO : gbList) {%>
+                
+     
             <tbody>
                 <tr>
-                    <th scope="row" id="see">1</th>
-                    <td>2022/10/13 강남 거리 가로수 정비</td>
-                    <td>2022/6/30</td>
-                    <td>강남구청</td>
+                    <th scope="row" id="see" name="government_business_board_no"><%=gbDTO.getGovernment_business_board_no()%></th>
+                    <td name="business_title"><%=gbDTO.getBusiness_title()%></td>
+                    <td name="registration_date"><%=gbDTO.getRegistration_date()%></td>
+                    <td name="company_name"><%=gbDTO.getCompany_name() %></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>2022/10/13 역삼공원 정비</td>
-                    <td>2022/9/1</td>
-                    <td>강남구청</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>2022/12/10 크리스마스 대비 거리 공원 조성</td>
-                    <td>2022/10/1</td>
-                    <td>강남구청</td>
-                </tr>
+                
             </tbody>
+            
+           <%} %>
+           <%} // end else%>
         </table>
 
         <!-- </div> -->

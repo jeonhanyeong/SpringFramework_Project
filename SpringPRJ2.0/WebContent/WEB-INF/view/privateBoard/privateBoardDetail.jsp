@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+
+<%
+	String pri_business_board_no = request.getParameter("leid");
+
+%>
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -21,7 +26,8 @@
         <link rel="stylesheet" href="/resource/css/responsive.css">
     </head>
     <body>
-        
+                   					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
         <!--================Header Menu Area =================-->
         
         <!--================Header Menu Area =================-->
@@ -50,18 +56,22 @@
                             <div class="container">
                                 <div class="row row-cols-4">
                                   <div class="col coltitle">사업시작날짜: </div>
-                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="business_start_date" placeholder="사업시작날짜" onfocus="this.placeholder = ''" onblur="this.placeholder = '사업시작날짜'"><br/></div>
+                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="business_start_date" placeholder="사업시작날짜" onfocus="this.placeholder = ''" onblur="this.placeholder = '사업시작날짜'">
+                                  <br/></div>
                                   <div class="col coltitle">사업종료날짜: </div>
-                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="business_end_date" placeholder="사업종료날짜" onfocus="this.placeholder = ''" onblur="this.placeholder = '사업종료날짜'"><br/></div>
+                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="business_end_date" placeholder="사업종료날짜" onfocus="this.placeholder = ''" onblur="this.placeholder = '사업종료날짜'">
+                                  <br/></div>
                                 </div>
                               </div>	
                         <div style='margin: 50px 0 0px 0;'></div>
                               <div class="container">
                                 <div class="row row-cols-4">
                                   <div class="col coltitle">사업추정액: </div>
-                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="estimated_amount_of_business" placeholder="사업추정액" onfocus="this.placeholder = ''" onblur="this.placeholder = '사업추정액'"><br/></div>
+                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="estimated_amount_of_business" placeholder="사업추정액" onfocus="this.placeholder = ''" onblur="this.placeholder = '사업추정액'">
+                                  <br/></div>
                                   <div class="col coltitle">공고기한: </div>
-                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="goverment_publicly_announced" placeholder="공고기한" onfocus="this.placeholder = ''" onblur="this.placeholder = '공고기한'"><br/></div>
+                                  <div class="col"><input type="text" style="text-align: center;" class="form-control" id="goverment_publicly_announced" placeholder="공고기한" onfocus="this.placeholder = ''" onblur="this.placeholder = '공고기한'">
+                                  <br/></div>
                                 </div>
                               </div>
                         		

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//FN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.IGovBoardMapper">
+
+
+<!-- 정부사업공고게시판리스트 쿼리 -->
+<select id="getGovBoardList" resultType="GovBoardDTO">
+	SELECT gbb.government_business_board_no, gbb.business_title, gbb.registration_date, le.company_name 
+	FROM government_business_board gbb, field_of_business fob, landscaping_field_business lfb, landscaping_enterprise le 
+	WHERE le.landscaping_enterprise_no=lfb.landscaping_enterprise_no
+	and lfb.field_of_business_no=fob.field_of_business_no
+	and fob.field_of_business_no=gbb.field_of_business_no
+</select>
+
+<!-- 정부사업공고게시판 등록 쿼리 -->
+<insert id="InsertGovBoard" parameterType="GovBoardDTO">
+	INSERT INTO government_business_board(
+	government_business_board_no, 
+	business_title, 
+	estimated_amount_of_business, 
+	registration_date, 
+	government_publicly_announced, 
+	business_start_date, 
+	business_end_date, 
+	business_details) 
+	VALUES (government_business_board_seq.nextval, 
+	#{business_title},
+	#{estimated_amount_of_business},
+	sysdate,
+	#{government_publicly_announced},
+	#{business_start_date},
+	#{business_end_date},
+	#{business_details})
+</insert>
+
+<!-- 정부사업공고게시판 상세보기 -->
+<select id="getGovBoard" resultType="GovBoardDTO">
+	SELECT government_business_board_no, business_title, estimated_amount_of_business, registration_date, government_publicy_announced, business_start_date, business_end_date, business_details 
+	FROM government_business_board
+</select>
+
+<!-- 정부사업공고게시판 수정 -->
+<update id="updateGovBoard" parameterType="GovBoardDTO">
+	UPDATE government_business_board set
+		business_title = #{business_title},
+		estimated_amount_of_business = #{estimated_amount_of_business},
+		government_publicly_announced = #{government_publicly_announced},
+		business_start_date = #{business_start_date},
+		business_end_date = #{business_end_date},
+		business_details = #{business_details}
+</update>
+
+<!-- 정부사업공고게시판 삭제 -->
+<delete id="deleteGovBoard" parameterType="GovBoardDTO">
+	DELETE FROM government_business_board where government_business_board_no=#{government_business_board_no}
+</delete>
+
+</mapper>
+
+

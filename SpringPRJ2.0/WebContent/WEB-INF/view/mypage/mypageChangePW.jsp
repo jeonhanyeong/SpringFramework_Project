@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+ 	String sessionPart = (String)request.getAttribute("sessionPart");
+ 	
+ %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -12,9 +16,32 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../resource/css/mypageModify.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type ="text/javascript">
+    var userid = document.getElementById('userid').value;
+    function userCheck(){
+    	$.ajax({
+    		url:"/userCheck.do", 
+    		type: "post",
+    		data: userid,
+    		dataType: "json",
+    		success: function(data){
+    	    	if(data.equals("성공")){
+    	    		alert("본인확인 성공!");
+    	    	}
+    	    	else
+    	    		alert("본인확인 실패!");
+    	    },
+    		error:function(){alert("error");}
+    	});
+    }
+    
+    </script>
 </head>
 
 <body>
+     <input type="hidden" id="sessionID" name="sessionID" class="sessionID" value="${sessionScope.sessionID}"/>
+     <input type="hidden" id="sessionPart" name="sessionPart" value="${sessionScope.sessionPart}"/>
     <h1>개인정보수정</h1>
     <hr>
     <div style="width:100%; padding: 1%;">
@@ -23,10 +50,10 @@
                 <li><a href="/mypage/mypageModify.do" class="item">
                         <div>개인정보수정</div>
                     </a></li>
-                <li><a href="/mypage/mypageChangePW.do" class="item">
+                <li><a href="mypageChangePW.do" class="item">
                         <div>비밀번호변경</div>
                     </a></li>
-                <li><a href="/mypage/mypageDelete.do" class="item">
+                <li><a href="mypageDelete.do" class="item">
                         <div>회원탈퇴</div>
                     </a></li>
                 <li><a href="/mypage/mypage.do" class="item">
@@ -39,18 +66,18 @@
             <form>
                 <div class="abc">
                     <p class="abc_p"><strong>아이디</strong></p>
-                    <input type="text" class="textbox" name="companyName" value="">
+                    <input type="text" class="userid" name="userid" id="userid" value="">
                 </div>
                 <p>
-                    <input type="submit" class="userCheck" value="본인확인">
+                    <input type="button" class="userCheck" onClick="userCheck()" value="본인확인">
                 </p>
                 <div class="abc">
                     <p class="abc_p"><strong>비밀번호</strong></p>
-                    <input type="password" class="textbox" name="passwordInput" value="">
+                    <input type="password" class="textbox" name="passwordInput" value="" readonly>
                 </div>
                 <div class="abc">
                     <p class="abc_p"><strong>비밀번호확인</strong></p>
-                    <input type="password" class="textbox" name="passwordConfirm" value="">
+                    <input type="password" class="textbox" name="passwordConfirm" value="" readonly>
                 </div>
 
                 <p>

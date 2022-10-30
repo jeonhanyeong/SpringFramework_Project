@@ -21,6 +21,8 @@ public interface IMyPageService {
 	List<GovPublicOfficialDTO> getATListTwo();
 	
 	List<GovPublicOfficialDTO> getATListThree();
+	
+	Integer userCheck(String sessionID);
 
 
 }

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+#table1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bottomnumber {
+    margin-left: auto;
+    margin-right: auto;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#board_class {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#board_write{
+    display: inline-block;
+    float: right;
+}
+
+#write_text {
+    color:rgb(25, 61, 180)
+}
+
+#board_head{
+    display: inline-block;
+}
+
+#table_section {
+    padding-left: 120px;
+    padding-right: 120px;
+}

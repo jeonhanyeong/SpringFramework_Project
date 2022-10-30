@@ -29,6 +29,8 @@
 </head>
 
 <body>
+     <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+     <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
     <h1>개인정보수정</h1>
     <hr>
     <div style="width:100%; padding: 1%;">
@@ -47,6 +49,7 @@
                         <div>돌아가기</div>
                     </a></li>
             </ul>
+            
         </div>
 
         <div class="input-form">
@@ -100,7 +103,7 @@
                 </div>
                 <div class="abc">
                     <p class="abc_p"><strong>주소</strong></p>
-                    <input type="text" class="textbox" name="gov_addr" value="<%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %>">
+                    <input type="text" class="textbox" name="gov_addr" value="<%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %>" readonly>
                 </div>
 			<% }
      	}else if(sessionPart.equals("pri")){
@@ -119,7 +122,7 @@
                 </div>
                 <div class="abc">
                     <p class="abc_p"><strong>주소</strong></p>
-                    <input type="text" class="textbox" name="pri_addr" value="<%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %>">
+                    <input type="text" class="textbox" name="pri_addr" value="<%= dto.getMetropolitan_city_name() %>&nbsp;<%= dto.getCities_name() %>" readonly>
                 </div><%}
      	}%>
      	

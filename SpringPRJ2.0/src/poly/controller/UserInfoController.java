@@ -1,13 +1,16 @@
 
 package poly.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import poly.dto.GovPublicOfficialDTO;
 import poly.dto.LandscapingDTO;
 import poly.dto.PriEnterpriseDTO;
+import poly.dto.UserInfoDTO;
+import poly.service.IUserInfoService;
 import poly.service.impl.LoginService;
+import poly.util.CmmUtil;
+import poly.util.EncryptUtil;
 
 @Controller
 public class UserInfoController {
@@ -142,5 +149,80 @@ public class UserInfoController {
 
 		return "/user/login";
 	}
+	
+	@Resource(name = "UserInfoService")
+	private IUserInfoService userInfoService;
+	
+	@RequestMapping(value="private-join")
+	public String private_join() {
+		log.info(this.getClass().getName() + "./private-join ok!");
+		
+		return "/private-join";
+	}
+	
+	/*로직*/
+	@RequestMapping(value="/insertUserInfo", method = RequestMethod.POST)
+	public String insertUserInfo(HttpServletRequest request, HttpServletResponse response,
+            ModelMap model) throws Exception{
+		
+		log.info(this.getClass().getName()+".insertUserInfo start");
+		
+		String msg = "";
+		
+		System.out.println("회원가입 컨트롤러옴");
+		
+		UserInfoDTO pDTO = null;
+		
+		try {
+			String id = CmmUtil.nvl(request.getParameter("landscaping_enterprise_id"));
+			String pw = CmmUtil.nvl(request.getParameter("landscaping_enterprise_pw"));
+			String name = CmmUtil.nvl(request.getParameter("company_name"));
+			String tel = CmmUtil.nvl(request.getParameter("company_tel"));
+			String Bnumber = CmmUtil.nvl(request.getParameter("business_registration_number"));
+			
+			log.info("id = " + id);
+			log.info("pw = " + pw);
+			log.info("name = " + name);
+			log.info("tel = " + tel);
+			log.info("Bnumber = " + Bnumber);
+			
+			pDTO = new UserInfoDTO();
+			
+			pDTO.setLandscaping_enterprise_id(id);
+			pDTO.setLandscaping_enterprise_pw(EncryptUtil.encHashSHA256(pw));
+			pDTO.setCompany_name(name);
+			pDTO.setCompany_tel(tel);
+			pDTO.setBusiness_registration_number(Bnumber);
+			
+			
+			/**
+			 * 회원가입
+			 */
+			int res = userInfoService.insertUserInfo(pDTO);
+			
+			if(res==1) {
+				msg="회원가입 완료";
+			}else if(res==2) {
+				msg ="이미 가입된 이메일 주소입니다";
+			}else {
+				msg = "오류로 회원가입 실패";
+			}
+			
+		}catch(Exception e) {
+			msg ="실패 : " +e.toString();
+			log.info(e.toString());
+			e.printStackTrace();
+		}finally {
+			log.info(this.getClass().getName()+".insertUserInfo end");
+			
+			model.addAttribute("msg", msg);
+			model.addAttribute("pDTO", pDTO);
+			
+			//변수 초기화
+			pDTO = null;
+		}
+		return "/user/login";
+	}
+	
 
 }

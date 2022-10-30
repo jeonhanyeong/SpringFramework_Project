@@ -55,4 +55,9 @@ public class MyPageService implements IMyPageService{
 		// TODO Auto-generated method stub
 		return myPageMapper.getATListThree();
 	}
+	
+	@Override
+	public Integer userCheck(String sessionID) {
+		return myPageMapper.userCheck(sessionID);
+	}
 } 

@@ -21,8 +21,8 @@ import poly.dto.LandscapingDTO;
 import poly.dto.PriEnterpriseDTO;
 import poly.service.IMyPageService;
 
-@EnableWebMvc
 @Controller
+@EnableWebMvc
 public class MypageController {
 	private Logger log = Logger.getLogger(this.getClass());
 
@@ -66,10 +66,86 @@ public class MypageController {
 
 		return "/mypage/mypage";
 	}
+	
+	// 개인정보수정에서 마이페이지가는 메소드
+	@RequestMapping(value = "/mypage/mypage", method = RequestMethod.GET)
+	public String mypageMypage(HttpServletRequest request, HttpSession session, ModelMap model) {
+		log.info(this.getClass());
+		//전 페이지에서 세션값 받아오기
+		  String sessionID = (String) request.getSession().getAttribute("sessionID");
+		  String sessionPart = (String) request.getSession().getAttribute("sessionPart");
+		//전 페이지에서 받아온 세션값 현재 페이지 세션에 저장
+		  session.setAttribute("sessionID", sessionID);
+		  session.setAttribute("sessionPart", sessionPart);
+		  
+		  //LandscapingDTO landdto = new LandscapingDTO();
+		  //GovPublicOfficialDTO govdto = new GovPublicOfficialDTO();
+		  //PriEnterpriseDTO pridto = new PriEnterpriseDTO();
+		  
+		  
+		  //세션값이 land(조경원예기업)일 경우
+		  if(sessionPart.equals("land")) {
+			  List<LandscapingDTO> landList = mypageService.getlandDetail(sessionID);
+			  model.addAttribute("Detail", landList);
+			  model.addAttribute("sessionPart", "land");
+			  
+		  //세션값이 gov(공무원)일 경우  
+		  }else if(sessionPart.equals("gov")) {
+			  List<GovPublicOfficialDTO> govList = mypageService.getgovDetail(sessionID);
+			  model.addAttribute("Detail", govList);
+			  model.addAttribute("sessionPart", "gov");
+			  
+		  //세션값이 pri(민간기업)일 경우   
+		  }else {
+			  List<PriEnterpriseDTO> priList = mypageService.getpriDetail(sessionID);
+			  model.addAttribute("Detail", priList);
+			  model.addAttribute("sessionPart", "pri");
+		  }
 
-	// 개인정보수정 페이지
+		return "/mypage/mypage";
+	}
+
+	// 개인정보수정 페이지 안에서 개인정보수정으로 가는 페이지
 	@RequestMapping(value = "mypageModify", method = RequestMethod.GET)
 	public String mypageModify(HttpServletRequest request, HttpSession session, ModelMap model ) {
+		log.info(this.getClass());
+		//전 페이지에서 세션값 받아오기
+		  String sessionID = (String) request.getSession().getAttribute("sessionID");
+		  String sessionPart = (String) request.getSession().getAttribute("sessionPart");
+		//전 페이지에서 받아온 세션값 현재 페이지 세션에 저장
+		  session.setAttribute("sessionID", sessionID);
+		  session.setAttribute("sessionPart", sessionPart);
+		  
+		  //LandscapingDTO landdto = new LandscapingDTO();
+		  //GovPublicOfficialDTO govdto = new GovPublicOfficialDTO();
+		  //PriEnterpriseDTO pridto = new PriEnterpriseDTO();
+		  
+		  
+		  //세션값이 land(조경원예기업)일 경우
+		  if(sessionPart.equals("land")) {
+			  List<String> partList = mypageService.getPartName();
+			  List<LandscapingDTO> landList = mypageService.getlandDetail(sessionID);
+			  model.addAttribute("landpartList", partList);
+			  model.addAttribute("Detail", landList);
+			  model.addAttribute("sessionPart", "land");
+		  //세션값이 gov(공무원)일 경우  
+		  }else if(sessionPart.equals("gov")) {
+			  List<GovPublicOfficialDTO> govList = mypageService.getgovDetail(sessionID);
+			  model.addAttribute("Detail", govList);
+			  model.addAttribute("sessionPart", "gov");
+		  //세션값이 pri(민간기업)일 경우   
+		  }else {
+			  List<PriEnterpriseDTO> priList = mypageService.getpriDetail(sessionID);
+			  model.addAttribute("Detail", priList);
+			  model.addAttribute("sessionPart", "pri");
+		  }
+		  
+		return "/mypage/mypageModify";
+	}
+	
+	// 개인정보수정 페이지
+	@RequestMapping(value = "/mypage/mypageModify", method = RequestMethod.GET)
+	public String mypageMyModify(HttpServletRequest request, HttpSession session, ModelMap model ) {
 		log.info(this.getClass());
 		//전 페이지에서 세션값 받아오기
 		  String sessionID = (String) request.getSession().getAttribute("sessionID");
@@ -107,17 +183,29 @@ public class MypageController {
 
 	// 비밀번호변경 페이지
 	@RequestMapping(value = "/mypage/mypageChangePW")
-	public String mypageChangePW() {
+	public String mypageChangePW(HttpServletRequest request, HttpSession session, ModelMap model) {
 		log.info(this.getClass());
-
+		//전 페이지에서 세션값 받아오기
+		  String sessionID = (String) request.getSession().getAttribute("sessionID");
+		  String sessionPart = (String) request.getSession().getAttribute("sessionPart");
+		//전 페이지에서 받아온 세션값 현재 페이지 세션에 저장
+		  session.setAttribute("sessionID", sessionID);
+		  session.setAttribute("sessionPart", sessionPart);
+		  
 		return "/mypage/mypageChangePW";
 	}
 
 	// 회원탈퇴 페이지
 	@RequestMapping(value = "/mypage/mypageDelete")
-	public String mypageDelete() {
+	public String mypageDelete(HttpServletRequest request, HttpSession session, ModelMap model) {
 		log.info(this.getClass());
-
+		//전 페이지에서 세션값 받아오기
+		  String sessionID = (String) request.getSession().getAttribute("sessionID");
+		  String sessionPart = (String) request.getSession().getAttribute("sessionPart");
+		//전 페이지에서 받아온 세션값 현재 페이지 세션에 저장
+		  session.setAttribute("sessionID", sessionID);
+		  session.setAttribute("sessionPart", sessionPart);
+		  
 		return "/mypage/mypageDelete";
 	}
 
@@ -137,6 +225,23 @@ public class MypageController {
 	public @ResponseBody List<GovPublicOfficialDTO> ajaxListThree() {
 		List<GovPublicOfficialDTO> list = mypageService.getATListThree();
 		return list;
+	}
+	
+	@RequestMapping(value = "/userCheck.do", method = RequestMethod.POST)
+	public @ResponseBody String userCheck(@RequestParam(value="id", defaultValue = "1") String id) {
+
+		log.info(id);
+		String result ="";
+		int count = mypageService.userCheck(id);
+		
+		if(count == 0) {
+			result = "성공";
+		}
+		else
+			result = "실패";
+		
+		
+		return result;
 	}
 
 }

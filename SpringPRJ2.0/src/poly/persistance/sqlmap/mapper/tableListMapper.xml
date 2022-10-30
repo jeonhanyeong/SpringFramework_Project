@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poly.persistance.mapper.ITableMapper">
+<select id="getTableList" resultType="TableDTO">
+SELECT BR.BUSINESS_PROGRESS_NO, BR.GROUP_NO, BR.ORDER_NUMBER, BR.PROGRESS_REGISTRATION_DATE, BR.PROGRESS_TITLE, BR.PROGRESS_DETAILED, BR.PROGRESS_FILE, LE.COMPANY_NAME, BR.PUBLIC_OFFICIAL_NO 
+FROM BUSINESS_PROGRESS BR, LANDSCAPING_ENTERPRISE LE 
+WHERE BR.LANDSCAPING_ENTERPRISE_NO = LE.LANDSCAPING_ENTERPRISE_NO
+</select>
+<select id="getDetail" parameterType="TableDTO" resultType="TableDTO">
+	SELECT * FROM BUSINESS_PROGRESS WHERE BUSINESS_PROGRESS_NO = #{business_progress_no}
+</select>
+<insert id="insertbsiness" parameterType="TableDTO">
+	INSERT INTO BUSINESS_PROGRESS VALUES (business_progress_seq.NEXTVAL, 000000, 000000, sysdate, #{progress_title}, #{progress_detailed}, 4, 4, 'c\work')
+</insert>
+</mapper>

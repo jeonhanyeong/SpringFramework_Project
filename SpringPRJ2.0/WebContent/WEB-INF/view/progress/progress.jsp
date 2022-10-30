@@ -31,64 +31,51 @@ background-color: rgba(0, 0, 0, 0.5);
 </head>
 
 <body>
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
     <!--================Header Menu Area =================-->
-    <header class="header_area">
-        <div class="top_menu">
-            <div class="container contaierColor">
-                <div class="top_inner">
-                    <div class="float-left">
-                        <a href="#">로그아웃</a>
-                    </div>
-                 <!-- sns 영역
-                    <div class="float-right">
-                        <ul class="list header_socila">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                    </div>
-                 -->
-                </div>
+       <header class="header_area">
+           	<div class="top_menu">
+           		<div class="container contaierColor">
+           			<div class="top_inner">
+           				<div class="float-left">
+           					<a href="/logout.do">로그아웃</a>
+           					<p>${sessionScope.sessionID}님 ! 환영합니다.</p>
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
+           				</div>
+           			</div>
+           		</div>
+           	</div>
+            <div class="main_menu" id="mainNav">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo-2.png" alt=""><img src="img/logo-2.png" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="/notice/notice.do">공지사항</a></li> 
+								<li class="nav-item"><a class="nav-link" href="business_progress.do">진행현황</a></li>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="governmentBoard/governmentBoardTable.do">정부사업</a></li>
+										<li class="nav-item"><a class="nav-link" href="/privateBoard/privateBoardTable.do">민간사업</a></li>
+									</ul>
+								</li> 
+								<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
+							</ul>
+						</div> 
+					</div>
+            	</nav>
             </div>
-        </div>
-     <div class="main_menu" id="mainNav">
-         <nav class="navbar navbar-expand-lg navbar-light">
-             <div class="container">
-                 <!-- Brand and toggle get grouped for better mobile display -->
-                 <a class="navbar-brand logo_h" href="index.html"><img src="img/logo-2.png" alt=""><img src="img/logo-2.png" alt=""></a>
-                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                 </button>
-                 <!-- Collect the nav links, forms, and other content for toggling -->
-                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                     <ul class="nav navbar-nav menu_nav ml-auto">
-                         <li class="nav-item active"><a class="nav-link" href="index.html">공지사항</a></li> 
-                         <li class="nav-item"><a class="nav-link" href="about-us.html">진행현황</a></li>
-                         <!--<li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-                             <ul class="dropdown-menu">
-                                 <li class="nav-item"><a class="nav-link" href="projects.html">Project</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="project-details.html">Project Details</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-                             </ul>
-                         </li> -->
-                         <li class="nav-item submenu dropdown">
-                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
-                             <ul class="dropdown-menu">
-                                 <li class="nav-item"><a class="nav-link" href="blog.html">정부사업</a></li>
-                                 <li class="nav-item"><a class="nav-link" href="single-blog.html">민간사업</a></li>
-                             </ul>
-                         </li> 
-                         <li class="nav-item"><a class="nav-link" href="contact.html">마이페이지</a></li>
-                     </ul>
-                 </div> 
-             </div>
-         </nav>
-     </div>
- </header>
+        </header>
  <!--================Header Menu Area =================-->
 
     <!--================Home Banner Area =================-->

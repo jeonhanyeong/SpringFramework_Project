@@ -25,14 +25,14 @@
     <body>
         
         <!--================Header Menu Area =================-->
-        <header class="header_area">
+           <header class="header_area">
            	<div class="top_menu">
            		<div class="container contaierColor">
            			<div class="top_inner">
            				<div class="float-left">
-                        <a href="/logout.do">로그아웃</a>
-                        <p>안녕하세요. ${sessionScope.sessionID} 공무원님!</p>
-                             <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					<a href="/logout.do">로그아웃</a>
+           					<p>${sessionScope.sessionID}님 ! 환영합니다.</p>
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
            					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
            				</div>
            			</div>
@@ -52,9 +52,13 @@
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
 								<li class="nav-item active"><a class="nav-link" href="/notice/notice.do">공지사항</a></li> 
-								<li class="nav-item"><a class="nav-link" href="/progress/progress.js">진행현황</a></li>
+								<li class="nav-item"><a class="nav-link" href="business_progress.do">진행현황</a></li>
 								<li class="nav-item submenu dropdown">
-									<a href="/govermentBoard/govermentBoardTable.jsp" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">사업공고</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="governmentBoard/governmentBoardTable.do">정부사업</a></li>
+										<li class="nav-item"><a class="nav-link" href="/privateBoard/privateBoardTable.do">민간사업</a></li>
+									</ul>
 								</li> 
 								<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
 							</ul>

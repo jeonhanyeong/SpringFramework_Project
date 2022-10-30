@@ -52,7 +52,7 @@
                     <div class="group">
                         <input type="submit" class="button" value="로그인">
                         <br/>
-                        <input type="button" class="button" onclick="location.href='landJoin.do'" value="회원가입">
+                        <input type="button" class="button" onclick="location.href='private-join.do'" value="회원가입">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
@@ -77,7 +77,7 @@
                     <div class="group">
                         <input type="submit" class="button" value="로그인">
                         <br/>
-                        <input type="button" class="button" onclick="location.href='landJoin.do'" value="회원가입">
+                        <input type="button" class="button" onclick="location.href='private-join.do'" value="회원가입">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
@@ -102,7 +102,7 @@
                     <div class="group">
                         <input type="submit" class="button" value="로그인">
                         <br/>
-                        <input type="button" class="button" onclick="location.href='landJoin.do'" value="회원가입">
+                        <input type="button" class="button" onclick="location.href='private-join.do'" value="회원가입">
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">

@@ -13,6 +13,9 @@ public class CmmUtil {
 		}
 		return res;
 	}
+	public static int invl(String in){
+	      return invl(in);
+	   }
 	
 	public static String nvl(String str){
 		return nvl(str,"");

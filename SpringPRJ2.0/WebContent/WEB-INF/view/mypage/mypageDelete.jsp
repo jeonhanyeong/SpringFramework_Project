@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+ 	String sessionPart = (String)request.getAttribute("sessionPart");
+ 	
+ %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -15,6 +19,8 @@
 </head>
 
 <body>
+     <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+     <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
     <h1>개인정보수정</h1>
     <hr>
     <div style="width:100%; padding: 1%;">

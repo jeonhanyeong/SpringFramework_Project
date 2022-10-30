@@ -15,6 +15,8 @@
 </head>
 
 <body>
+           					 <input type="hidden" id="sessionID" value="${sessionScope.sessionID}"/>
+           					 <input type="hidden" id="sessionPart" value="${sessionScope.sessionPart}"/>
     <h1>개인정보수정</h1>
     <hr>
     <div style="width:100%; padding: 1%;">

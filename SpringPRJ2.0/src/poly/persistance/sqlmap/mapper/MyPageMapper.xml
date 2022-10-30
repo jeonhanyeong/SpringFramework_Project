@@ -71,4 +71,15 @@ ct.metropolitan_city_no = met.metropolitan_city_no
 SELECT field_of_business_name from field_of_business
 </select>
 
+
+<select id="userCheck" parameterType="String" resultType="Integer">
+SELECT 
+count(*) 
+FROM 
+landscaping_enterprise 
+WHERE 
+LANDSCAPING_ENTERPRISE_ID = #{id}
+</select>
+
+
 </mapper>

@@ -23,5 +23,7 @@ public interface IMyPageMapper {
 	List<GovPublicOfficialDTO> getgovDetail(String sessionID);
 
 	List<PriEnterpriseDTO> getpriDetail(String sessionID);
+	
+	Integer userCheck(String sessionID);
 
 }
